@@ -12,6 +12,9 @@ const state = {
         hearts: 5,
         lessonsCompleted: 0,
         achievements: [],
+        ownedFaces: ['cat-blue'],
+        currentFace: 'cat-blue',
+        profilePicture: null,
         progress: {
             basics: { level: 0, progress: 0, completedLessons: [] },
             python: { level: 1, progress: 0, completedLessons: [] },
@@ -25,12 +28,26 @@ const state = {
     }
 };
 
+// Shop items - AI faces
+const shopItems = [
+    { id: 'cat-blue', name: 'Blue Cat', price: 0, color: '#87ceeb', owned: true },
+    { id: 'cat-pink', name: 'Pink Cat', price: 50, color: '#ffb6c1', owned: false },
+    { id: 'cat-purple', name: 'Purple Cat', price: 100, color: '#dda0dd', owned: false },
+    { id: 'cat-green', name: 'Green Cat', price: 150, color: '#90ee90', owned: false },
+    { id: 'cat-orange', name: 'Orange Cat', price: 200, color: '#ffa500', owned: false },
+    { id: 'cat-gold', name: 'Golden Cat', price: 500, color: '#ffd700', owned: false },
+    { id: 'robot-blue', name: 'Blue Robot', price: 300, color: '#4169e1', owned: false },
+    { id: 'robot-pink', name: 'Pink Robot', price: 350, color: '#ff69b4', owned: false }
+];
+
 // Load user data from localStorage
 function loadUserData() {
     const savedData = localStorage.getItem('codelearn-user');
     if (savedData) {
         state.user = JSON.parse(savedData);
         updateUI();
+        updateProfilePicture();
+        updateCatFace();
     }
 }
 
@@ -69,18 +86,22 @@ function showScreen(screenId) {
     });
     document.getElementById(screenId).classList.add('active');
     state.currentScreen = screenId;
-    
+
     // Update bottom nav
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
     });
-    
+
     if (screenId === 'language-selection') {
         document.querySelector('.nav-item:nth-child(1)').classList.add('active');
     } else if (screenId === 'lesson-selection') {
         document.querySelector('.nav-item:nth-child(2)').classList.add('active');
-    } else if (screenId === 'profile-screen') {
+        renderLessonPath();
+    } else if (screenId === 'shop-screen') {
         document.querySelector('.nav-item:nth-child(3)').classList.add('active');
+        renderShop();
+    } else if (screenId === 'profile-screen') {
+        document.querySelector('.nav-item:nth-child(4)').classList.add('active');
         renderAchievements();
     }
 }
@@ -602,4 +623,109 @@ function generateCatResponse(userMessage) {
     ];
     
     return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+}
+
+// Shop Functions
+function renderShop() {
+    const shopGrid = document.getElementById('shop-grid');
+    document.getElementById('shop-xp').textContent = `${state.user.xp} XP`;
+
+    shopGrid.innerHTML = shopItems.map(item => {
+        const isOwned = state.user.ownedFaces.includes(item.id);
+        const isEquipped = state.user.currentFace === item.id;
+        const canAfford = state.user.xp >= item.price;
+
+        return `
+            <div class="shop-item ${isEquipped ? 'equipped' : ''}">
+                <div class="shop-item-preview" style="background: ${item.color}">
+                    ${item.id.includes('robot') ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-cat"></i>'}
+                </div>
+                <div class="shop-item-info">
+                    <h4>${item.name}</h4>
+                    <p>${item.price === 0 ? 'Free' : item.price + ' XP'}</p>
+                </div>
+                <button class="shop-btn" onclick="${isOwned ? (isEquipped ? '' : `equipFace('${item.id}')`) : (canAfford ? `buyFace('${item.id}')` : '')}" 
+                        ${!isOwned && !canAfford ? 'disabled' : ''} 
+                        ${isEquipped ? 'disabled' : ''}>
+                    ${isEquipped ? 'Equipped' : (isOwned ? 'Equip' : (canAfford ? 'Buy' : 'Not enough XP'))}
+                </button>
+            </div>
+        `;
+    }).join('');
+}
+
+function buyFace(faceId) {
+    const item = shopItems.find(i => i.id === faceId);
+    if (!item || state.user.xp < item.price) return;
+
+    state.user.xp -= item.price;
+    state.user.ownedFaces.push(faceId);
+    saveUserData();
+    renderShop();
+    alert(`🎉 You bought ${item.name}!`);
+}
+
+function equipFace(faceId) {
+    state.user.currentFace = faceId;
+    saveUserData();
+    renderShop();
+    updateCatFace();
+    alert('✨ Face equipped!');
+}
+
+function updateCatFace() {
+    const item = shopItems.find(i => i.id === state.user.currentFace);
+    if (item) {
+        document.querySelectorAll('.cat-body, .cat-face-small').forEach(el => {
+            el.style.background = `linear-gradient(135deg, ${item.color} 0%, ${adjustColor(item.color, -20)} 100%)`;
+            el.style.borderColor = adjustColor(item.color, -30);
+        });
+    }
+}
+
+function adjustColor(color, amount) {
+    const hex = color.replace('#', '');
+    const num = parseInt(hex, 16);
+    const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+    const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
+    const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+    return `#${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
+}
+
+// Profile Picture Upload
+function handleProfileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        state.user.profilePicture = e.target.result;
+        saveUserData();
+        updateProfilePicture();
+    };
+    reader.readAsDataURL(file);
+}
+
+function updateProfilePicture() {
+    const profileImage = document.getElementById('profile-image');
+    const profileIcon = document.getElementById('profile-icon');
+
+    if (state.user.profilePicture) {
+        profileImage.src = state.user.profilePicture;
+        profileImage.style.display = 'block';
+        profileIcon.style.display = 'none';
+    } else {
+        profileImage.style.display = 'none';
+        profileIcon.style.display = 'block';
+    }
+}
+
+// Username Edit
+function editUsername() {
+    const newName = prompt('Enter your new username:', state.user.name);
+    if (newName && newName.trim() !== '') {
+        state.user.name = newName.trim();
+        saveUserData();
+        document.getElementById('profile-name').textContent = state.user.name;
+    }
 }

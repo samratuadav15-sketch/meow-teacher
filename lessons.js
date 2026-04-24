@@ -654,6 +654,120 @@ const lessonsData = {
                     }
                 }
             ]
+        },
+        {
+            id: 'python-11',
+            title: 'Classes & OOP',
+            description: 'Object-oriented programming',
+            xp: 50,
+            steps: [
+                {
+                    topic: 'Creating Classes',
+                    explanation: 'Classes are blueprints for creating objects. They define properties (attributes) and behaviors (methods). The __init__ method is a constructor that runs when creating an object.',
+                    code: 'class Dog:\n    def __init__(self, name):\n        self.name = name\n    \n    def bark(self):\n        print(f"{self.name} says Woof!")',
+                    codeBreakdown: [
+                        { line: 'class Dog:', explanation: 'class: Defines class. Dog: Class name.' },
+                        { line: 'def __init__(self, name):', explanation: '__init__: Constructor. Runs on object creation.' },
+                        { line: 'self.name = name', explanation: 'self.name: Instance attribute. Stores name.' },
+                        { line: 'def bark(self):', explanation: 'bark: Method. self: Reference to instance.' }
+                    ],
+                    quiz: {
+                        question: 'What is __init__ used for?',
+                        options: ['Deleting objects', 'Initializing objects', 'Copying objects', 'Comparing objects'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Creating Objects',
+                    explanation: 'To create an object from a class, call the class name like a function. This creates a new instance and runs __init__. You can then call methods on the object.',
+                    code: 'my_dog = Dog("Buddy")\nmy_dog.bark()\n\nanother_dog = Dog("Max")\nanother_dog.bark()',
+                    codeBreakdown: [
+                        { line: 'my_dog = Dog("Buddy")', explanation: 'Dog("Buddy"): Creates object. __init__ runs with "Buddy".' },
+                        { line: 'my_dog.bark()', explanation: 'bark(): Calls method on my_dog object.' },
+                        { line: 'another_dog = Dog("Max")', explanation: 'Creates another Dog object with different name.' }
+                    ],
+                    quiz: {
+                        question: 'How do you create an object from a class?',
+                        options: ['new Dog()', 'Dog()', 'create Dog()', 'Dog.new()'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'python-12',
+            title: 'List Comprehensions',
+            description: 'Concise list creation',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Basic List Comprehension',
+                    explanation: 'List comprehensions provide a concise way to create lists. They combine a for loop and optional condition in a single line. Syntax: [expression for item in iterable if condition]',
+                    code: 'numbers = [1, 2, 3, 4, 5]\nsquared = [x**2 for x in numbers]\nprint(squared)',
+                    codeBreakdown: [
+                        { line: 'numbers = [1, 2, 3, 4, 5]', explanation: 'Original list of numbers.' },
+                        { line: 'squared = [x**2 for x in numbers]', explanation: 'x**2: Expression. for x in numbers: Loop. Creates [1, 4, 9, 16, 25].' },
+                        { line: 'print(squared)', explanation: 'Prints squared list.' }
+                    ],
+                    quiz: {
+                        question: 'What does [x**2 for x in numbers] do?',
+                        options: ['Creates a dictionary', 'Creates a squared list', 'Filters numbers', 'Raises an error'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'List Comprehension with Condition',
+                    explanation: 'You can add a condition to filter items. Only items that meet the condition are included in the result.',
+                    code: 'numbers = [1, 2, 3, 4, 5, 6]\nevens = [x for x in numbers if x % 2 == 0]\nprint(evens)',
+                    codeBreakdown: [
+                        { line: 'numbers = [1, 2, 3, 4, 5, 6]', explanation: 'Original list.' },
+                        { line: 'evens = [x for x in numbers if x % 2 == 0]', explanation: 'if x % 2 == 0: Only even numbers. Creates [2, 4, 6].' }
+                    ],
+                    quiz: {
+                        question: 'What does the if clause do in list comprehension?',
+                        options: ['Always includes items', 'Filters items based on condition', 'Sorts the list', 'Duplicates items'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'python-13',
+            title: 'Lambda Functions',
+            description: 'Anonymous functions',
+            xp: 35,
+            steps: [
+                {
+                    topic: 'Introduction to Lambda',
+                    explanation: 'Lambda functions are small anonymous functions defined with the lambda keyword. They can have any number of arguments but only one expression. Useful for short, throwaway functions.',
+                    code: 'square = lambda x: x ** 2\nprint(square(5))\n\nadd = lambda x, y: x + y\nprint(add(3, 4))',
+                    codeBreakdown: [
+                        { line: 'square = lambda x: x ** 2', explanation: 'lambda: Keyword. x: Parameter. x ** 2: Expression (return value).' },
+                        { line: 'print(square(5))', explanation: 'Calls lambda with 5. Returns 25.' },
+                        { line: 'add = lambda x, y: x + y', explanation: 'Lambda with two parameters. Returns sum.' }
+                    ],
+                    quiz: {
+                        question: 'How many expressions can a lambda have?',
+                        options: ['None', 'One', 'Two', 'Unlimited'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Lambda with Built-in Functions',
+                    explanation: 'Lambdas are often used with built-in functions like map(), filter(), and sorted() for concise data transformations.',
+                    code: 'numbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x**2, numbers))\nprint(squared)',
+                    codeBreakdown: [
+                        { line: 'numbers = [1, 2, 3, 4, 5]', explanation: 'Original list.' },
+                        { line: 'map(lambda x: x**2, numbers)', explanation: 'map(): Applies lambda to each item. Returns iterator.' },
+                        { line: 'list(...)', explanation: 'list(): Converts iterator to list. Creates [1, 4, 9, 16, 25].' }
+                    ],
+                    quiz: {
+                        question: 'What function applies a function to each item?',
+                        options: ['filter()', 'map()', 'reduce()', 'apply()'],
+                        correct: 1
+                    }
+                }
+            ]
         }
     ],
     java: [
@@ -1039,6 +1153,164 @@ const lessonsData = {
                     }
                 }
             ]
+        },
+        {
+            id: 'java-11',
+            title: 'Inheritance',
+            description: 'Extending classes',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Extending Classes',
+                    explanation: 'Inheritance allows a class to inherit properties and methods from another class. The "extends" keyword is used. The class being inherited from is called the parent/superclass, and the inheriting class is the child/subclass.',
+                    code: 'class Animal {\n    void eat() {\n        System.out.println("This animal eats food");\n    }\n}\n\nclass Dog extends Animal {\n    void bark() {\n        System.out.println("The dog barks");\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'class Animal {', explanation: 'Animal: Parent class (superclass). Contains common behavior.' },
+                        { line: '    void eat() {', explanation: 'eat(): Method that will be inherited by child classes.' },
+                        { line: 'class Dog extends Animal {', explanation: 'Dog: Child class. extends: Inherits from Animal.' },
+                        { line: '    void bark() {', explanation: 'bark(): Dog-specific method (not in Animal).' }
+                    ],
+                    quiz: {
+                        question: 'What keyword is used for inheritance in Java?',
+                        options: ['inherits', 'extends', 'super', 'parent'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Using Inherited Methods',
+                    explanation: 'Child classes can use methods from the parent class as if they were their own. This promotes code reuse and establishes an "is-a" relationship between classes.',
+                    code: 'public class Main {\n    public static void main(String[] args) {\n        Dog myDog = new Dog();\n        myDog.eat();  // Inherited from Animal\n        myDog.bark(); // Defined in Dog\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'Dog myDog = new Dog();', explanation: 'Creates Dog object.' },
+                        { line: 'myDog.eat();', explanation: 'eat(): Inherited from Animal class. Dog can use it.' },
+                        { line: 'myDog.bark();', explanation: 'bark(): Defined in Dog class itself.' }
+                    ],
+                    quiz: {
+                        question: 'Can a child class use parent class methods?',
+                        options: ['No', 'Yes', 'Only if overridden', 'Only with super keyword'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'java-12',
+            title: 'Interfaces',
+            description: 'Defining contracts',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Creating Interfaces',
+                    explanation: 'An interface is a contract that defines what a class must do, but not how. It contains abstract methods (methods without implementation). Classes implement interfaces using the "implements" keyword.',
+                    code: 'interface Animal {\n    void makeSound();\n    void eat();\n}\n\nclass Dog implements Animal {\n    public void makeSound() {\n        System.out.println("Woof!");\n    }\n    \n    public void eat() {\n        System.out.println("Dog eats");\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'interface Animal {', explanation: 'interface: Defines contract. Animal: Interface name.' },
+                        { line: '    void makeSound();', explanation: 'makeSound(): Abstract method (no body, just ;).' },
+                        { line: 'class Dog implements Animal {', explanation: 'Dog: Class. implements: Must fulfill Animal contract.' },
+                        { line: '    public void makeSound() {', explanation: 'makeSound(): Implementation of interface method.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword implements an interface?',
+                        options: ['extends', 'implements', 'uses', 'inherits'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Multiple Interfaces',
+                    explanation: 'A class can implement multiple interfaces, unlike inheritance where a class can only extend one parent. This allows for flexible design patterns.',
+                    code: 'interface Flyable {\n    void fly();\n}\n\ninterface Swimmable {\n    void swim();\n}\n\nclass Duck implements Flyable, Swimmable {\n    public void fly() { System.out.println("Flying"); }\n    public void swim() { System.out.println("Swimming"); }\n}',
+                    codeBreakdown: [
+                        { line: 'class Duck implements Flyable, Swimmable {', explanation: 'Duck: Implements two interfaces (comma-separated).' },
+                        { line: '    public void fly() {', explanation: 'fly(): Implements Flyable interface method.' },
+                        { line: '    public void swim() {', explanation: 'swim(): Implements Swimmable interface method.' }
+                    ],
+                    quiz: {
+                        question: 'How many interfaces can a class implement?',
+                        options: ['Only one', 'Two', 'Unlimited', 'None'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'java-13',
+            title: 'Exception Handling',
+            description: 'Try-catch blocks',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Try-Catch Blocks',
+                    explanation: 'Exception handling in Java uses try-catch blocks. Code that might throw an exception goes in the try block. The catch block handles the exception. This prevents program crashes.',
+                    code: 'public class ExceptionExample {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println("Cannot divide by zero!");\n        }\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'try {', explanation: 'try: Block containing code that might throw exception.' },
+                        { line: '    int result = 10 / 0;', explanation: 'This throws ArithmeticException (division by zero).' },
+                        { line: '} catch (ArithmeticException e) {', explanation: 'catch: Handles specific exception type. e: Exception object.' },
+                        { line: '    System.out.println("Cannot divide by zero!");', explanation: 'Prints error message instead of crashing.' }
+                    ],
+                    quiz: {
+                        question: 'What block contains code that might throw an exception?',
+                        options: ['catch', 'try', 'finally', 'throw'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Finally Block',
+                    explanation: 'The finally block always executes, whether an exception occurred or not. It\'s used for cleanup operations like closing files or database connections.',
+                    code: 'try {\n    // Code that might throw exception\n} catch (Exception e) {\n    // Handle exception\n} finally {\n    System.out.println("This always runs");\n}',
+                    codeBreakdown: [
+                        { line: 'try {', explanation: 'try: Attempt code that might fail.' },
+                        { line: '} catch (Exception e) {', explanation: 'catch: Handle any exception.' },
+                        { line: '} finally {', explanation: 'finally: Always runs, regardless of exception.' },
+                        { line: '    System.out.println("This always runs");', explanation: 'This executes in all cases (success or failure).' }
+                    ],
+                    quiz: {
+                        question: 'When does the finally block execute?',
+                        options: ['Only on exception', 'Only on success', 'Always', 'Never'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'java-14',
+            title: 'ArrayList',
+            description: 'Dynamic arrays',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Introduction to ArrayList',
+                    explanation: 'ArrayList is a resizable array implementation in Java. Unlike regular arrays, ArrayList can grow dynamically. It\'s part of the java.util package and stores objects, not primitives.',
+                    code: 'import java.util.ArrayList;\n\npublic class ArrayListExample {\n    public static void main(String[] args) {\n        ArrayList<String> names = new ArrayList<>();\n        names.add("Alice");\n        names.add("Bob");\n        System.out.println(names.get(0));\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'import java.util.ArrayList;', explanation: 'Import: Brings ArrayList class into scope.' },
+                        { line: 'ArrayList<String> names = new ArrayList<>();', explanation: 'ArrayList<String>: Type. names: Variable. new: Creates instance.' },
+                        { line: 'names.add("Alice");', explanation: 'add(): Adds element to end of list.' },
+                        { line: 'names.get(0);', explanation: 'get(0): Retrieves element at index 0 ("Alice").' }
+                    ],
+                    quiz: {
+                        question: 'What package contains ArrayList?',
+                        options: ['java.lang', 'java.util', 'java.io', 'java.array'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'ArrayList Methods',
+                    explanation: 'ArrayList has many useful methods like size() for length, remove() to delete elements, contains() to check if element exists, and clear() to remove all elements.',
+                    code: 'ArrayList<Integer> numbers = new ArrayList<>();\nnumbers.add(10);\nnumbers.add(20);\nSystem.out.println(numbers.size());\nnumbers.remove(0);\nnumbers.clear();',
+                    codeBreakdown: [
+                        { line: 'ArrayList<Integer> numbers = new ArrayList<>();', explanation: 'Integer: Wrapper class (ArrayList can\'t hold primitives).' },
+                        { line: 'numbers.size()', explanation: 'size(): Returns number of elements (like array.length).' },
+                        { line: 'numbers.remove(0)', explanation: 'remove(0): Removes element at index 0.' },
+                        { line: 'numbers.clear()', explanation: 'clear(): Removes all elements from list.' }
+                    ],
+                    quiz: {
+                        question: 'What method returns the size of an ArrayList?',
+                        options: ['length()', 'size()', 'count()', 'getLength()'],
+                        correct: 1
+                    }
+                }
+            ]
         }
     ],
     javascript: [
@@ -1408,6 +1680,175 @@ const lessonsData = {
                     quiz: {
                         question: 'What event triggers when a key is pressed?',
                         options: ['keypress', 'keydown', 'key', 'input'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'javascript-11',
+            title: 'Promises & Async',
+            description: 'Asynchronous programming',
+            xp: 50,
+            steps: [
+                {
+                    topic: 'Introduction to Promises',
+                    explanation: 'Promises represent the eventual completion or failure of an asynchronous operation. A Promise can be in one of three states: pending, fulfilled, or rejected. They\'re essential for handling operations like API calls.',
+                    code: 'const myPromise = new Promise((resolve, reject) => {\n    setTimeout(() => {\n        resolve("Success!");\n    }, 1000);\n});\n\nmyPromise.then(result => {\n    console.log(result);\n});',
+                    codeBreakdown: [
+                        { line: 'new Promise((resolve, reject) => {', explanation: 'Promise: Constructor. resolve: Success callback. reject: Failure callback.' },
+                        { line: '    setTimeout(() => {', explanation: 'setTimeout: Simulates async operation (1 second delay).' },
+                        { line: '        resolve("Success!");', explanation: 'resolve(): Marks promise as fulfilled with value.' },
+                        { line: 'myPromise.then(result => {', explanation: 'then(): Runs when promise resolves. result: The resolved value.' }
+                    ],
+                    quiz: {
+                        question: 'What are the three states of a Promise?',
+                        options: ['Start, middle, end', 'Pending, fulfilled, rejected', 'Begin, continue, finish', 'Ready, set, go'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Async/Await',
+                    explanation: 'Async/await is syntactic sugar over Promises that makes asynchronous code look and behave more like synchronous code. The async keyword marks a function as asynchronous, and await pauses execution until a Promise resolves.',
+                    code: 'async function fetchData() {\n    try {\n        const result = await myPromise;\n        console.log(result);\n    } catch (error) {\n        console.error(error);\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'async function fetchData() {', explanation: 'async: Marks function as asynchronous (returns Promise).' },
+                        { line: '    const result = await myPromise;', explanation: 'await: Pauses until myPromise resolves. result: Resolved value.' },
+                        { line: '    } catch (error) {', explanation: 'catch: Handles errors from await operations.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword pauses execution until a Promise resolves?',
+                        options: ['wait', 'pause', 'await', 'hold'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'javascript-12',
+            title: 'Array Methods',
+            description: 'Map, filter, and reduce',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Map Method',
+                    explanation: 'The map() method creates a new array by applying a function to each element in the original array. It doesn\'t modify the original array. Useful for transforming data.',
+                    code: 'const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // [2, 4, 6, 8, 10]',
+                    codeBreakdown: [
+                        { line: 'const numbers = [1, 2, 3, 4, 5]', explanation: 'Original array of numbers.' },
+                        { line: 'numbers.map(num => num * 2)', explanation: 'map(): Applies function to each element. num * 2: Doubles each number.' },
+                        { line: 'const doubled = ...', explanation: 'doubled: New array with transformed values.' }
+                    ],
+                    quiz: {
+                        question: 'Does map() modify the original array?',
+                        options: ['Yes', 'No', 'Sometimes', 'Only if specified'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Filter Method',
+                    explanation: 'The filter() method creates a new array with elements that pass a test (return true from the callback function). It\'s useful for selecting specific items from an array.',
+                    code: 'const numbers = [1, 2, 3, 4, 5, 6];\nconst evens = numbers.filter(num => num % 2 === 0);\nconsole.log(evens); // [2, 4, 6]',
+                    codeBreakdown: [
+                        { line: 'const numbers = [1, 2, 3, 4, 5, 6]', explanation: 'Original array.' },
+                        { line: 'numbers.filter(num => num % 2 === 0)', explanation: 'filter(): Keeps only elements where condition is true. num % 2 === 0: Even numbers.' },
+                        { line: 'const evens = ...', explanation: 'evens: New array with only even numbers.' }
+                    ],
+                    quiz: {
+                        question: 'What does filter() return?',
+                        options: ['A single element', 'A new array with filtered elements', 'The original array', 'A boolean'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Reduce Method',
+                    explanation: 'The reduce() method executes a reducer function on each element and produces a single output value. It\'s powerful for summing, averaging, or any operation that combines array elements.',
+                    code: 'const numbers = [1, 2, 3, 4, 5];\nconst sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // 15',
+                    codeBreakdown: [
+                        { line: 'const numbers = [1, 2, 3, 4, 5]', explanation: 'Original array.' },
+                        { line: 'numbers.reduce((acc, num) => acc + num, 0)', explanation: 'reduce(): Combines elements. acc: Accumulator. num: Current value. 0: Initial value.' },
+                        { line: 'const sum = ...', explanation: 'sum: Single result (total of all numbers).' }
+                    ],
+                    quiz: {
+                        question: 'What does reduce() return?',
+                        options: ['An array', 'A single value', 'The original array', 'Nothing'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'javascript-13',
+            title: 'Classes & OOP',
+            description: 'Object-oriented JavaScript',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Creating Classes',
+                    explanation: 'Classes in JavaScript are templates for creating objects. They define properties and methods. The constructor method is special - it runs when creating a new instance.',
+                    code: 'class Dog {\n    constructor(name) {\n        this.name = name;\n    }\n    \n    bark() {\n        console.log(this.name + " says Woof!");\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'class Dog {', explanation: 'class: Defines class template. Dog: Class name.' },
+                        { line: '    constructor(name) {', explanation: 'constructor: Special method. Runs on object creation. name: Parameter.' },
+                        { line: '        this.name = name;', explanation: 'this.name: Instance property. Stores name.' },
+                        { line: '    bark() {', explanation: 'bark(): Method (function) of the class.' }
+                    ],
+                    quiz: {
+                        question: 'What method runs when creating a new class instance?',
+                        options: ['init', 'constructor', 'create', 'new'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Creating Objects',
+                    explanation: 'To create an object from a class, use the "new" keyword followed by the class name and any constructor parameters. This creates a new instance with its own properties.',
+                    code: 'const myDog = new Dog("Buddy");\nmyDog.bark();\n\nconst anotherDog = new Dog("Max");\nanotherDog.bark();',
+                    codeBreakdown: [
+                        { line: 'const myDog = new Dog("Buddy")', explanation: 'new: Creates instance. Dog("Buddy"): Calls constructor with "Buddy".' },
+                        { line: 'myDog.bark()', explanation: 'bark(): Calls method on myDog instance.' },
+                        { line: 'const anotherDog = new Dog("Max")', explanation: 'Creates separate instance with different name.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword creates a new class instance?',
+                        options: ['create', 'new', 'make', 'instance'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'javascript-14',
+            title: 'Modules',
+            description: 'Import and export',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Exporting Functions',
+                    explanation: 'Modules allow you to split code into separate files. You can export functions, variables, or classes using the "export" keyword. There are named exports and default exports.',
+                    code: '// utils.js\nexport const add = (a, b) => a + b;\nexport const multiply = (a, b) => a * b;\n\nexport default function greet(name) {\n    return `Hello, ${name}`;\n}',
+                    codeBreakdown: [
+                        { line: 'export const add = (a, b) => a + b;', explanation: 'export: Named export. add: Function name. Can import multiple.' },
+                        { line: 'export const multiply = (a, b) => a * b;', explanation: 'export: Another named export. multiply: Function name.' },
+                        { line: 'export default function greet(name) {', explanation: 'export default: Default export. One per file. Can import with any name.' }
+                    ],
+                    quiz: {
+                        question: 'How many default exports can a file have?',
+                        options: ['None', 'One', 'Two', 'Unlimited'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Importing Functions',
+                    explanation: 'You can import exported items using the "import" keyword. Named imports use curly braces, while default imports don\'t. You can also import everything with import *.',
+                    code: '// main.js\nimport { add, multiply } from "./utils.js";\nimport greet from "./utils.js";\nimport * as utils from "./utils.js";\n\nconsole.log(add(2, 3));\nconsole.log(greet("Alice"));',
+                    codeBreakdown: [
+                        { line: 'import { add, multiply } from "./utils.js"', explanation: 'Named imports in curly braces. Must match export names.' },
+                        { line: 'import greet from "./utils.js"', explanation: 'Default import. No curly braces. Can use any name.' },
+                        { line: 'import * as utils from "./utils.js"', explanation: 'Import all as namespace. utils.add(), utils.multiply(), etc.' }
+                    ],
+                    quiz: {
+                        question: 'What syntax is used for named imports?',
+                        options: ['Parentheses ()', 'Curly braces {}', 'Square brackets []', 'Angle brackets <>'],
                         correct: 1
                     }
                 }
@@ -1793,6 +2234,164 @@ const lessonsData = {
                     }
                 }
             ]
+        },
+        {
+            id: 'cpp-11',
+            title: 'Inheritance',
+            description: 'Extending classes',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Class Inheritance',
+                    explanation: 'Inheritance allows a class to inherit members from another class. The derived class inherits all public and protected members of the base class. Use the colon followed by the base class name to inherit.',
+                    code: 'class Animal {\npublic:\n    void eat() {\n        cout << "Animal eats" << endl;\n    }\n};\n\nclass Dog : public Animal {\npublic:\n    void bark() {\n        cout << "Dog barks" << endl;\n    }\n};',
+                    codeBreakdown: [
+                        { line: 'class Animal {', explanation: 'Animal: Base class (parent). Contains common members.' },
+                        { line: 'class Dog : public Animal {', explanation: 'Dog: Derived class. : public Animal: Inherits from Animal.' },
+                        { line: '    void bark() {', explanation: 'bark(): Dog-specific method (not in Animal).' }
+                    ],
+                    quiz: {
+                        question: 'What symbol is used for inheritance in C++?',
+                        options: ['extends', ':', 'inherits', '->'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Using Inherited Members',
+                    explanation: 'Derived classes can use public members from the base class as if they were their own. This promotes code reuse and establishes an "is-a" relationship.',
+                    code: 'int main() {\n    Dog myDog;\n    myDog.eat();  // Inherited from Animal\n    myDog.bark(); // Defined in Dog\n    return 0;\n}',
+                    codeBreakdown: [
+                        { line: 'Dog myDog;', explanation: 'Creates Dog object.' },
+                        { line: 'myDog.eat();', explanation: 'eat(): Inherited from Animal class.' },
+                        { line: 'myDog.bark();', explanation: 'bark(): Defined in Dog class itself.' }
+                    ],
+                    quiz: {
+                        question: 'Can a derived class use base class public members?',
+                        options: ['No', 'Yes', 'Only with using declaration', 'Only protected members'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'cpp-12',
+            title: 'Templates',
+            description: 'Generic programming',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Function Templates',
+                    explanation: 'Templates allow you to write generic functions and classes that work with multiple data types. Function templates are defined with the template keyword followed by template parameters.',
+                    code: 'template <typename T>\nT maximum(T a, T b) {\n    return (a > b) ? a : b;\n}\n\nint main() {\n    cout << maximum(5, 10) << endl;\n    cout << maximum(3.5, 2.1) << endl;\n    return 0;\n}',
+                    codeBreakdown: [
+                        { line: 'template <typename T>', explanation: 'template: Keyword. typename T: Template parameter (type).' },
+                        { line: 'T maximum(T a, T b)', explanation: 'T: Generic type. Works with any comparable type.' },
+                        { line: 'maximum(5, 10)', explanation: 'T becomes int. Returns 10.' },
+                        { line: 'maximum(3.5, 2.1)', explanation: 'T becomes double. Returns 3.5.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword declares a template?',
+                        options: ['generic', 'template', 'typename', 'type'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Class Templates',
+                    explanation: 'Class templates allow you to create generic classes that work with any data type. The STL containers like vector are implemented as class templates.',
+                    code: 'template <typename T>\nclass Box {\nprivate:\n    T value;\npublic:\n    Box(T v) : value(v) {}\n    T getValue() { return value; }\n};\n\nBox<int> intBox(42);\nBox<double> doubleBox(3.14);',
+                    codeBreakdown: [
+                        { line: 'template <typename T>', explanation: 'Template parameter for class.' },
+                        { line: 'class Box {', explanation: 'Box: Generic class name.' },
+                        { line: 'Box<int> intBox(42)', explanation: 'Box<int>: Instantiates with int type.' },
+                        { line: 'Box<double> doubleBox(3.14)', explanation: 'Box<double>: Instantiates with double type.' }
+                    ],
+                    quiz: {
+                        question: 'What does Box<int> create?',
+                        options: ['A Box of integers', 'A Box of doubles', 'A Box of strings', 'An error'],
+                        correct: 0
+                    }
+                }
+            ]
+        },
+        {
+            id: 'cpp-13',
+            title: 'Exception Handling',
+            description: 'Try-catch blocks',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Try-Catch Blocks',
+                    explanation: 'C++ exception handling uses try-catch blocks. Code that might throw an exception goes in try. The catch block handles the exception. This prevents program crashes from errors.',
+                    code: '#include <iostream>\nusing namespace std;\n\nint main() {\n    try {\n        int divisor = 0;\n        if (divisor == 0) {\n            throw "Division by zero!";\n        }\n    } catch (const char* msg) {\n        cout << msg << endl;\n    }\n    return 0;\n}',
+                    codeBreakdown: [
+                        { line: 'try {', explanation: 'try: Block containing code that might throw.' },
+                        { line: '    throw "Division by zero!";', explanation: 'throw: Throws exception (string literal).' },
+                        { line: '} catch (const char* msg) {', explanation: 'catch: Catches const char* exception. msg: Exception message.' },
+                        { line: '    cout << msg << endl;', explanation: 'Prints exception message.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword throws an exception?',
+                        options: ['raise', 'throw', 'error', 'except'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Standard Exceptions',
+                    explanation: 'C++ provides standard exception classes in <stdexcept>. Common ones include std::runtime_error, std::invalid_argument, and std::out_of_range.',
+                    code: '#include <stdexcept>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    try {\n        throw runtime_error("Something went wrong");\n    } catch (const runtime_error& e) {\n        cout << e.what() << endl;\n    }\n}',
+                    codeBreakdown: [
+                        { line: '#include <stdexcept>', explanation: 'Includes standard exception classes.' },
+                        { line: 'throw runtime_error("...")', explanation: 'runtime_error: Standard exception class.' },
+                        { line: 'catch (const runtime_error& e)', explanation: 'Catches runtime_error by reference.' },
+                        { line: 'e.what()', explanation: 'what(): Returns exception message string.' }
+                    ],
+                    quiz: {
+                        question: 'What header contains standard exceptions?',
+                        options: ['<exception>', '<stdexcept>', '<error>', '<throw>'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'cpp-14',
+            title: 'STL Algorithms',
+            description: 'Standard algorithms',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Sort Algorithm',
+                    explanation: 'The STL provides powerful algorithms in <algorithm>. sort() sorts elements in a range. It uses efficient sorting algorithms (usually introsort).',
+                    code: '#include <algorithm>\n#include <vector>\n#include <iostream>\nusing namespace std;\n\nint main() {\n    vector<int> nums = {5, 2, 8, 1, 9};\n    sort(nums.begin(), nums.end());\n    for (int n : nums) cout << n << " ";\n}',
+                    codeBreakdown: [
+                        { line: '#include <algorithm>', explanation: 'Includes STL algorithms.' },
+                        { line: 'sort(nums.begin(), nums.end())', explanation: 'sort(): Sorts range from begin to end.' },
+                        { line: 'nums.begin()', explanation: 'begin(): Iterator to first element.' },
+                        { line: 'nums.end()', explanation: 'end(): Iterator past last element.' }
+                    ],
+                    quiz: {
+                        question: 'What header contains STL algorithms?',
+                        options: ['<sort>', '<algorithm>', '<stl>', '<iterator>'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Find Algorithm',
+                    explanation: 'The find() algorithm searches for a value in a range. It returns an iterator to the first matching element, or end() if not found.',
+                    code: 'vector<int> nums = {1, 2, 3, 4, 5};\nauto it = find(nums.begin(), nums.end(), 3);\nif (it != nums.end()) {\n    cout << "Found: " << *it << endl;\n}',
+                    codeBreakdown: [
+                        { line: 'find(nums.begin(), nums.end(), 3)', explanation: 'find(): Searches for 3 in range.' },
+                        { line: 'auto it', explanation: 'auto: Type deduction. it: Iterator to result.' },
+                        { line: 'if (it != nums.end())', explanation: 'Checks if found (not equal to end).' },
+                        { line: '*it', explanation: '*it: Dereferences iterator to get value.' }
+                    ],
+                    quiz: {
+                        question: 'What does find() return if element not found?',
+                        options: ['nullptr', 'end()', 'begin()', '-1'],
+                        correct: 1
+                    }
+                }
+            ]
         }
     ],
     csharp: [
@@ -2167,6 +2766,161 @@ const lessonsData = {
                     quiz: {
                         question: 'What LINQ method filters data?',
                         options: ['Filter()', 'Where()', 'Select()', 'Find()'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'csharp-11',
+            title: 'Inheritance',
+            description: 'Extending classes',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Class Inheritance',
+                    explanation: 'Inheritance allows a class to inherit members from another class. The derived class inherits all non-private members. Use the colon followed by the base class name to inherit.',
+                    code: 'public class Animal {\n    public void Eat() {\n        Console.WriteLine("Animal eats");\n    }\n}\n\npublic class Dog : Animal {\n    public void Bark() {\n        Console.WriteLine("Dog barks");\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'public class Animal {', explanation: 'Animal: Base class (parent). Contains common members.' },
+                        { line: 'public class Dog : Animal {', explanation: 'Dog: Derived class. : Animal: Inherits from Animal.' },
+                        { line: '    public void Bark() {', explanation: 'Bark(): Dog-specific method (not in Animal).' }
+                    ],
+                    quiz: {
+                        question: 'What symbol is used for inheritance in C#?',
+                        options: ['extends', ':', 'inherits', '->'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Using Inherited Members',
+                    explanation: 'Derived classes can use public and protected members from the base class. This promotes code reuse and establishes an "is-a" relationship.',
+                    code: 'Dog myDog = new Dog();\nmyDog.Eat();  // Inherited from Animal\nmyDog.Bark(); // Defined in Dog',
+                    codeBreakdown: [
+                        { line: 'Dog myDog = new Dog();', explanation: 'Creates Dog object.' },
+                        { line: 'myDog.Eat();', explanation: 'Eat(): Inherited from Animal class.' },
+                        { line: 'myDog.Bark();', explanation: 'Bark(): Defined in Dog class itself.' }
+                    ],
+                    quiz: {
+                        question: 'Can a derived class use base class public members?',
+                        options: ['No', 'Yes', 'Only with base keyword', 'Only protected members'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'csharp-12',
+            title: 'Interfaces',
+            description: 'Defining contracts',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Creating Interfaces',
+                    explanation: 'An interface defines a contract that classes must implement. It contains method signatures without implementations. Classes implement interfaces using the same syntax as inheritance.',
+                    code: 'public interface IAnimal {\n    void MakeSound();\n    void Eat();\n}\n\npublic class Dog : IAnimal {\n    public void MakeSound() {\n        Console.WriteLine("Woof!");\n    }\n    \n    public void Eat() {\n        Console.WriteLine("Dog eats");\n    }\n}',
+                    codeBreakdown: [
+                        { line: 'public interface IAnimal {', explanation: 'interface: Defines contract. IAnimal: Interface name (I prefix convention).' },
+                        { line: '    void MakeSound();', explanation: 'MakeSound(): Method signature (no body, just ;).' },
+                        { line: 'public class Dog : IAnimal {', explanation: 'Dog: Class. : IAnimal: Must implement interface.' },
+                        { line: '    public void MakeSound() {', explanation: 'MakeSound(): Implementation of interface method.' }
+                    ],
+                    quiz: {
+                        question: 'What naming convention is common for interfaces?',
+                        options: ['No convention', 'Prefix with I', 'Suffix with Interface', 'All caps'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Multiple Interfaces',
+                    explanation: 'A class can implement multiple interfaces, separating the interface names with commas. This allows for flexible design patterns like multiple inheritance of behavior.',
+                    code: 'public interface IFlyable {\n    void Fly();\n}\n\npublic interface ISwimmable {\n    void Swim();\n}\n\npublic class Duck : IFlyable, ISwimmable {\n    public void Fly() { Console.WriteLine("Flying"); }\n    public void Swim() { Console.WriteLine("Swimming"); }\n}',
+                    codeBreakdown: [
+                        { line: 'public class Duck : IFlyable, ISwimmable {', explanation: 'Duck: Implements two interfaces (comma-separated).' },
+                        { line: '    public void Fly() {', explanation: 'Fly(): Implements IFlyable method.' },
+                        { line: '    public void Swim() {', explanation: 'Swim(): Implements ISwimmable method.' }
+                    ],
+                    quiz: {
+                        question: 'How many interfaces can a class implement?',
+                        options: ['Only one', 'Two', 'Unlimited', 'None'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'csharp-13',
+            title: 'Exception Handling',
+            description: 'Try-catch blocks',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Try-Catch Blocks',
+                    explanation: 'Exception handling in C# uses try-catch blocks. Code that might throw an exception goes in try. The catch block handles the exception. This prevents program crashes.',
+                    code: 'try {\n    int result = 10 / 0;\n} catch (DivideByZeroException e) {\n    Console.WriteLine("Cannot divide by zero!");\n}',
+                    codeBreakdown: [
+                        { line: 'try {', explanation: 'try: Block containing code that might throw.' },
+                        { line: '    int result = 10 / 0;', explanation: 'This throws DivideByZeroException.' },
+                        { line: '} catch (DivideByZeroException e) {', explanation: 'catch: Handles specific exception. e: Exception object.' },
+                        { line: '    Console.WriteLine("...");', explanation: 'Prints error message instead of crashing.' }
+                    ],
+                    quiz: {
+                        question: 'What block contains code that might throw an exception?',
+                        options: ['catch', 'try', 'finally', 'throw'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Finally Block',
+                    explanation: 'The finally block always executes, whether an exception occurred or not. It\'s used for cleanup operations like closing files or database connections.',
+                    code: 'try {\n    // Code that might throw\n} catch (Exception e) {\n    // Handle exception\n} finally {\n    Console.WriteLine("This always runs");\n}',
+                    codeBreakdown: [
+                        { line: 'try {', explanation: 'try: Attempt code that might fail.' },
+                        { line: '} catch (Exception e) {', explanation: 'catch: Handle any exception.' },
+                        { line: '} finally {', explanation: 'finally: Always runs, regardless of exception.' },
+                        { line: '    Console.WriteLine("This always runs");', explanation: 'This executes in all cases.' }
+                    ],
+                    quiz: {
+                        question: 'When does the finally block execute?',
+                        options: ['Only on exception', 'Only on success', 'Always', 'Never'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'csharp-14',
+            title: 'Async/Await',
+            description: 'Asynchronous programming',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Introduction to Async',
+                    explanation: 'Async/await is a pattern for asynchronous programming in C#. The async keyword marks a method as asynchronous, and await pauses execution until a Task completes.',
+                    code: 'public async Task DownloadDataAsync() {\n    await Task.Delay(1000);\n    Console.WriteLine("Data downloaded!");\n}\n\nawait DownloadDataAsync();',
+                    codeBreakdown: [
+                        { line: 'public async Task', explanation: 'async: Marks method as async. Task: Return type for async methods.' },
+                        { line: '    await Task.Delay(1000);', explanation: 'await: Pauses until Task completes. Delay: Simulates async work.' },
+                        { line: 'await DownloadDataAsync();', explanation: 'Calls async method and waits for completion.' }
+                    ],
+                    quiz: {
+                        question: 'What return type do async methods typically use?',
+                        options: ['void', 'Task', 'int', 'string'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Creating Tasks',
+                    explanation: 'Tasks represent asynchronous operations. You can create tasks with Task.Run() to run code on a thread pool thread, or use Task.Delay() for delays.',
+                    code: 'Task<int> task = Task.Run(() => {\n    return 42;\n});\n\nint result = await task;\nConsole.WriteLine(result);',
+                    codeBreakdown: [
+                        { line: 'Task.Run(() => { return 42; })', explanation: 'Task.Run: Runs lambda on thread pool. Returns Task<int>.' },
+                        { line: 'int result = await task', explanation: 'await: Waits for task to complete. result: Gets return value.' },
+                        { line: 'Console.WriteLine(result)', explanation: 'Prints 42 (the task result).' }
+                    ],
+                    quiz: {
+                        question: 'What does Task.Run() do?',
+                        options: ['Runs code synchronously', 'Runs code on thread pool', 'Creates a delay', 'Throws an exception'],
                         correct: 1
                     }
                 }
@@ -2562,6 +3316,164 @@ const lessonsData = {
                     }
                 }
             ]
+        },
+        {
+            id: 'ruby-11',
+            title: 'Inheritance',
+            description: 'Class inheritance',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Class Inheritance',
+                    explanation: 'Ruby classes can inherit from other classes using the < operator. The child class inherits all methods from the parent class. This promotes code reuse.',
+                    code: 'class Animal\n  def speak\n    puts "Some sound"\n  end\nend\n\nclass Dog < Animal\n  def speak\n    puts "Woof!"\n  end\nend',
+                    codeBreakdown: [
+                        { line: 'class Animal', explanation: 'Animal: Parent class (superclass). Contains common methods.' },
+                        { line: 'class Dog < Animal', explanation: 'Dog: Child class. < Animal: Inherits from Animal.' },
+                        { line: '  def speak', explanation: 'speak: Overrides parent method with dog-specific behavior.' }
+                    ],
+                    quiz: {
+                        question: 'What symbol is used for inheritance in Ruby?',
+                        options: ['extends', '<', ':', 'inherits'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Using super',
+                    explanation: 'The super keyword calls the parent class\'s method of the same name. This allows you to extend parent behavior instead of completely overriding it.',
+                    code: 'class Animal\n  def initialize(name)\n    @name = name\n  end\nend\n\nclass Dog < Animal\n  def initialize(name, breed)\n    super(name)\n    @breed = breed\n  end\nend',
+                    codeBreakdown: [
+                        { line: 'class Animal', explanation: 'Animal: Parent class with initialize method.' },
+                        { line: 'class Dog < Animal', explanation: 'Dog: Child class with additional parameter.' },
+                        { line: '    super(name)', explanation: 'super: Calls parent initialize with name parameter.' },
+                        { line: '    @breed = breed', explanation: '@breed: Child-specific instance variable.' }
+                    ],
+                    quiz: {
+                        question: 'What keyword calls the parent method?',
+                        options: ['parent', 'super', 'base', 'inherit'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'ruby-12',
+            title: 'Exception Handling',
+            description: 'Begin-rescue blocks',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Begin-Rescue Blocks',
+                    explanation: 'Ruby uses begin-rescue blocks for exception handling. Code that might raise an exception goes in begin. The rescue block handles the exception.',
+                    code: 'begin\n  result = 10 / 0\nrescue ZeroDivisionError => e\n  puts "Cannot divide by zero!"\n  puts e.message\nend',
+                    codeBreakdown: [
+                        { line: 'begin', explanation: 'begin: Block containing code that might raise exception.' },
+                        { line: '  result = 10 / 0', explanation: 'This raises ZeroDivisionError.' },
+                        { line: 'rescue ZeroDivisionError => e', explanation: 'rescue: Catches specific exception. e: Exception object.' },
+                        { line: '  puts e.message', explanation: 'e.message: Exception error message.' }
+                    ],
+                    quiz: {
+                        question: 'What block contains code that might raise an exception?',
+                        options: ['try', 'begin', 'catch', 'rescue'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Ensure Block',
+                    explanation: 'The ensure block always executes, whether an exception occurred or not. It\'s used for cleanup operations like closing files.',
+                    code: 'begin\n  # Code that might raise\nrescue\n  # Handle exception\nensure\n  puts "This always runs"\nend',
+                    codeBreakdown: [
+                        { line: 'begin', explanation: 'begin: Attempt code that might fail.' },
+                        { line: 'rescue', explanation: 'rescue: Handle any exception.' },
+                        { line: 'ensure', explanation: 'ensure: Always runs, regardless of exception.' },
+                        { line: '  puts "This always runs"', explanation: 'This executes in all cases.' }
+                    ],
+                    quiz: {
+                        question: 'When does the ensure block execute?',
+                        options: ['Only on exception', 'Only on success', 'Always', 'Never'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'ruby-13',
+            title: 'Procs & Lambdas',
+            description: 'Anonymous functions',
+            xp: 45,
+            steps: [
+                {
+                    topic: 'Procs',
+                    explanation: 'Procs are blocks of code that can be stored in variables and passed around. They\'re created with Proc.new or the proc keyword. Procs check the number of arguments.',
+                    code: 'my_proc = Proc.new { |x| x * 2 }\nputs my_proc.call(5)\n\nanother = proc { |a, b| a + b }\nputs another.call(3, 4)',
+                    codeBreakdown: [
+                        { line: 'Proc.new { |x| x * 2 }', explanation: 'Proc.new: Creates proc. |x|: Parameter. x * 2: Return value.' },
+                        { line: 'my_proc.call(5)', explanation: 'call: Executes proc with argument 5. Returns 10.' },
+                        { line: 'proc { |a, b| a + b }', explanation: 'proc: Shorthand for Proc.new. Two parameters.' },
+                        { line: 'another.call(3, 4)', explanation: 'call: Executes with 3 and 4. Returns 7.' }
+                    ],
+                    quiz: {
+                        question: 'How do you create a Proc?',
+                        options: ['Proc.new', 'create proc', 'new Proc', 'make proc'],
+                        correct: 0
+                    }
+                },
+                {
+                    topic: 'Lambdas',
+                    explanation: 'Lambdas are similar to procs but have stricter argument checking and different return behavior. They\'re created with the lambda keyword or -> syntax.',
+                    code: 'my_lambda = lambda { |x| x * 2 }\nputs my_lambda.call(5)\n\nshort = ->(x) { x * 2 }\nputs short.call(5)',
+                    codeBreakdown: [
+                        { line: 'lambda { |x| x * 2 }', explanation: 'lambda: Creates lambda. Stricter argument checking.' },
+                        { line: 'my_lambda.call(5)', explanation: 'call: Executes lambda. Returns 10.' },
+                        { line: '->(x) { x * 2 }', explanation: '->: Stabby lambda syntax. More concise.' },
+                        { line: 'short.call(5)', explanation: 'call: Executes stabby lambda. Returns 10.' }
+                    ],
+                    quiz: {
+                        question: 'What is the stabby lambda syntax?',
+                        options: ['=>', '->', '>>', '=>>'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'ruby-14',
+            title: 'File I/O',
+            description: 'Reading and writing files',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Reading Files',
+                    explanation: 'Ruby provides simple ways to read files. File.read reads the entire file at once, while File.foreach reads line by line for large files.',
+                    code: 'content = File.read("file.txt")\nputs content\n\nFile.foreach("file.txt") do |line|\n  puts line\nend',
+                    codeBreakdown: [
+                        { line: 'File.read("file.txt")', explanation: 'File.read: Reads entire file content. Returns string.' },
+                        { line: 'File.foreach("file.txt")', explanation: 'File.foreach: Iterates over each line. Memory efficient.' },
+                        { line: 'do |line|', explanation: '|line|: Block parameter for each line.' }
+                    ],
+                    quiz: {
+                        question: 'What method reads an entire file at once?',
+                        options: ['File.open', 'File.read', 'File.get', 'File.load'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Writing Files',
+                    explanation: 'You can write to files using File.write for simple cases or File.open with a mode for more control. Modes include "w" for write (overwrite) and "a" for append.',
+                    code: 'File.write("file.txt", "Hello, World!")\n\nFile.open("file.txt", "a") do |file|\n  file.puts "New line"\nend',
+                    codeBreakdown: [
+                        { line: 'File.write("file.txt", "Hello, World!")', explanation: 'File.write: Writes string to file. Overwrites if exists.' },
+                        { line: 'File.open("file.txt", "a")', explanation: '"a": Append mode. Adds to end of file.' },
+                        { line: '  file.puts "New line"', explanation: 'file.puts: Writes line with newline to file.' },
+                        { line: 'end', explanation: 'end: Automatically closes file.' }
+                    ],
+                    quiz: {
+                        question: 'What mode appends to a file?',
+                        options: ['"w"', '"a"', '"r"', '"x"'],
+                        correct: 1
+                    }
+                }
+            ]
         }
     ],
     go: [
@@ -2937,6 +3849,163 @@ const lessonsData = {
                     quiz: {
                         question: 'What value indicates no error in Go?',
                         options: ['false', 'null', 'nil', '0'],
+                        correct: 2
+                    }
+                }
+            ]
+        },
+        {
+            id: 'go-11',
+            title: 'Methods',
+            description: 'Methods on structs',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Defining Methods',
+                    explanation: 'Methods in Go are functions with a receiver. The receiver appears before the function name in the declaration. Methods allow you to attach behavior to types (usually structs).',
+                    code: 'type Rectangle struct {\n    width, height float64\n}\n\nfunc (r Rectangle) Area() float64 {\n    return r.width * r.height\n}',
+                    codeBreakdown: [
+                        { line: 'type Rectangle struct {', explanation: 'Rectangle: Struct type to attach methods to.' },
+                        { line: 'func (r Rectangle) Area() float64 {', explanation: '(r Rectangle): Receiver (value receiver). Area: Method name.' },
+                        { line: '    return r.width * r.height', explanation: 'r.width, r.height: Access struct fields. Returns area.' }
+                    ],
+                    quiz: {
+                        question: 'What is the receiver in a Go method?',
+                        options: ['The return value', 'The type the method is attached to', 'The function name', 'The parameter'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Pointer Receivers',
+                    explanation: 'Pointer receivers allow methods to modify the receiver\'s value. Use pointer receivers when you need to mutate the struct or when the struct is large (to avoid copying).',
+                    code: 'type Counter struct {\n    count int\n}\n\nfunc (c *Counter) Increment() {\n    c.count++\n}\n\nfunc (c Counter) Value() int {\n    return c.count\n}',
+                    codeBreakdown: [
+                        { line: 'func (c *Counter) Increment() {', explanation: '(c *Counter): Pointer receiver. Can modify Counter.' },
+                        { line: '    c.count++', explanation: 'c.count: Modifies the actual Counter value.' },
+                        { line: 'func (c Counter) Value() int {', explanation: '(c Counter): Value receiver. Cannot modify Counter.' },
+                        { line: '    return c.count', explanation: 'Returns count without modifying.' }
+                    ],
+                    quiz: {
+                        question: 'When should you use a pointer receiver?',
+                        options: ['Always', 'When you need to modify the receiver', 'Never', 'Only for small structs'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'go-12',
+            title: 'Defer',
+            description: 'Deferred function calls',
+            xp: 35,
+            steps: [
+                {
+                    topic: 'Introduction to Defer',
+                    explanation: 'The defer statement schedules a function call to run when the surrounding function returns. Deferred calls are executed in LIFO order (last in, first out). Useful for cleanup.',
+                    code: 'func main() {\n    defer fmt.Println("World")\n    fmt.Println("Hello")\n}\n// Output: Hello, World',
+                    codeBreakdown: [
+                        { line: 'defer fmt.Println("World")', explanation: 'defer: Schedules print to run when main returns.' },
+                        { line: '    fmt.Println("Hello")', explanation: 'Prints "Hello" immediately.' },
+                        { line: '// Output: Hello, World', explanation: 'Deferred "World" prints after main completes.' }
+                    ],
+                    quiz: {
+                        question: 'When do deferred functions run?',
+                        options: ['Immediately', 'Before the function returns', 'After the function returns', 'Never'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Defer for Cleanup',
+                    explanation: 'Defer is commonly used for cleanup operations like closing files or unlocking mutexes. This ensures cleanup happens even if an error occurs.',
+                    code: 'func processFile(filename string) error {\n    file, err := os.Open(filename)\n    if err != nil {\n        return err\n    }\n    defer file.Close()\n    // Process file\n    return nil\n}',
+                    codeBreakdown: [
+                        { line: 'file, err := os.Open(filename)', explanation: 'Opens file. Might fail.' },
+                        { line: '    defer file.Close()', explanation: 'defer: Schedules Close to run when function returns.' },
+                        { line: '    // Process file', explanation: 'File processing code here.' },
+                        { line: '    return nil', explanation: 'file.Close() runs automatically here.' }
+                    ],
+                    quiz: {
+                        question: 'What is defer commonly used for?',
+                        options: ['Performance', 'Cleanup operations', 'Logging', 'Nothing'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'go-13',
+            title: 'Pointers',
+            description: 'Memory addresses',
+            xp: 40,
+            steps: [
+                {
+                    topic: 'Introduction to Pointers',
+                    explanation: 'Pointers store memory addresses. The & operator gets the address of a variable, and * dereferences a pointer to get the value at that address. Pointers are useful for sharing data.',
+                    code: 'func main() {\n    x := 42\n    p := &x\n    fmt.Println(*p)\n    *p = 100\n    fmt.Println(x)\n}',
+                    codeBreakdown: [
+                        { line: 'x := 42', explanation: 'x: Integer variable with value 42.' },
+                        { line: 'p := &x', explanation: '&x: Gets address of x. p: Pointer to x.' },
+                        { line: 'fmt.Println(*p)', explanation: '*p: Dereferences pointer. Prints 42.' },
+                        { line: '*p = 100', explanation: '*p: Modifies value at address. x becomes 100.' }
+                    ],
+                    quiz: {
+                        question: 'What operator gets the address of a variable?',
+                        options: ['*', '&', '@', '#'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Pointer Parameters',
+                    explanation: 'Passing pointers to functions allows the function to modify the original variable. This is more efficient for large structs and enables mutation.',
+                    code: 'func modify(x *int) {\n    *x = 100\n}\n\nfunc main() {\n    value := 42\n    modify(&value)\n    fmt.Println(value) // 100\n}',
+                    codeBreakdown: [
+                        { line: 'func modify(x *int)', explanation: '*int: Pointer parameter. Receives address.' },
+                        { line: '    *x = 100', explanation: '*x: Modifies value at address.' },
+                        { line: 'modify(&value)', explanation: '&value: Passes address of value.' },
+                        { line: 'fmt.Println(value)', explanation: 'Prints 100 (value was modified).' }
+                    ],
+                    quiz: {
+                        question: 'Why pass pointers to functions?',
+                        options: ['To copy data', 'To modify original and avoid copying', 'For security', 'No reason'],
+                        correct: 1
+                    }
+                }
+            ]
+        },
+        {
+            id: 'go-14',
+            title: 'Packages',
+            description: 'Code organization',
+            xp: 35,
+            steps: [
+                {
+                    topic: 'Package Declaration',
+                    explanation: 'Every Go file starts with a package declaration. Packages organize code and provide encapsulation. The main package is special - it defines an executable program.',
+                    code: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello")\n}',
+                    codeBreakdown: [
+                        { line: 'package main', explanation: 'package: Declares package. main: Executable package.' },
+                        { line: 'import "fmt"', explanation: 'import: Imports fmt package for I/O.' },
+                        { line: 'func main()', explanation: 'main: Entry point of executable.' }
+                    ],
+                    quiz: {
+                        question: 'What package is required for an executable?',
+                        options: ['package exec', 'package main', 'package app', 'package run'],
+                        correct: 1
+                    }
+                },
+                {
+                    topic: 'Importing Packages',
+                    explanation: 'You import packages to use their exported functions and types. Only capitalized names are exported (public). Lowercase names are private to the package.',
+                    code: 'import (\n    "fmt"\n    "math/rand"\n    "github.com/user/mypackage"\n)\n\nfunc main() {\n    fmt.Println(rand.Intn(100))\n}',
+                    codeBreakdown: [
+                        { line: 'import (', explanation: 'import: Imports multiple packages.' },
+                        { line: '    "fmt"', explanation: 'fmt: Standard library package.' },
+                        { line: '    "math/rand"', explanation: 'math/rand: Standard library (nested).' },
+                        { line: '    "github.com/user/mypackage"', explanation: 'Third-party package from GitHub.' }
+                    ],
+                    quiz: {
+                        question: 'Which names are exported from a package?',
+                        options: ['All names', 'Only lowercase', 'Only capitalized', 'Only private'],
                         correct: 2
                     }
                 }

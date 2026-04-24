@@ -251,14 +251,40 @@
                 </div>
             </div>
 
+            <!-- Shop Screen -->
+            <div id="shop-screen" class="screen">
+                <div class="container">
+                    <h1 class="title">Face Shop</h1>
+                    <div class="shop-header">
+                        <div class="shop-xp">
+                            <i class="fas fa-gem"></i>
+                            <span id="shop-xp">0 XP</span>
+                        </div>
+                    </div>
+                    <div class="shop-grid" id="shop-grid">
+                        <!-- Shop items will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Profile Screen -->
             <div id="profile-screen" class="screen">
                 <div class="container">
                     <div class="profile-header">
-                        <div class="profile-avatar">
-                            <i class="fas fa-user"></i>
+                        <div class="profile-avatar" id="profile-avatar-container" onclick="document.getElementById('profile-upload').click()">
+                            <img id="profile-image" src="" alt="Profile" style="display: none;">
+                            <i class="fas fa-user" id="profile-icon"></i>
+                            <div class="upload-hint">
+                                <i class="fas fa-camera"></i>
+                            </div>
                         </div>
-                        <h2 id="profile-name">Coder</h2>
+                        <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="handleProfileUpload(event)">
+                        <div class="profile-name-edit">
+                            <h2 id="profile-name">Coder</h2>
+                            <button class="edit-name-btn" onclick="editUsername()">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                        </div>
                         <p id="profile-level">Level 1</p>
                     </div>
                     <div class="stats-grid">
@@ -302,6 +328,10 @@
             <button class="nav-item" onclick="showScreen('lesson-selection')">
                 <i class="fas fa-book-open"></i>
                 <span>Lessons</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('shop-screen')">
+                <i class="fas fa-store"></i>
+                <span>Shop</span>
             </button>
             <button class="nav-item" onclick="showScreen('profile-screen')">
                 <i class="fas fa-user"></i>
