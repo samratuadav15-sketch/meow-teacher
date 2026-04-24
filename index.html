@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuest - Learn Coding Like Duolingo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated code lines background -->
+    <div class="code-lines">
+        <div class="code-line">const learn = () => { return "code"; };</div>
+        <div class="code-line">function create() { return "future"; }</div>
+        <div class="code-line">let coding = "life";</div>
+        <div class="code-line">if (passion) { learn(); }</div>
+        <div class="code-line">import skills from 'practice';</div>
+        <div class="code-line">while (alive) { keepLearning(); }</div>
+        <div class="code-line">const future = build();</div>
+        <div class="code-line">class Developer extends Human {}</div>
+    </div>
+    
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeQuest</span>
+            </div>
+            <div class="nav-stats">
+                <div class="stat-item">
+                    <i class="fas fa-fire"></i>
+                    <span id="streak-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-gem"></i>
+                    <span id="xp-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-heart"></i>
+                    <span id="hearts-count">5</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Language Selection Screen -->
+            <div id="language-selection" class="screen active">
+                <div class="container">
+                    <h1 class="title">Choose Your Language</h1>
+                    <p class="subtitle">Start your coding journey today</p>
+                    <div class="language-grid">
+                        <div class="language-card" data-language="python" onclick="selectLanguage('python')">
+                            <div class="language-icon python">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                            <p>Perfect for beginners</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="python-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="python-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="java" onclick="selectLanguage('java')">
+                            <div class="language-icon java">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h3>Java</h3>
+                            <p>Object-oriented programming</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="java-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="java-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="javascript" onclick="selectLanguage('javascript')">
+                            <div class="language-icon javascript">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h3>JavaScript</h3>
+                            <p>Web development</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="javascript-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="javascript-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="basics" onclick="selectLanguage('basics')">
+                            <div class="language-icon basics">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Coding Basics</h3>
+                            <p>Start here - Absolute beginner</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="basics-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="basics-level">Level 0</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="cpp" onclick="selectLanguage('cpp')">
+                            <div class="language-icon cpp">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>C++</h3>
+                            <p>High-performance systems</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="cpp-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="cpp-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="csharp" onclick="selectLanguage('csharp')">
+                            <div class="language-icon csharp">
+                                <i class="fas fa-windows"></i>
+                            </div>
+                            <h3>C#</h3>
+                            <p>Windows & Unity games</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="csharp-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="csharp-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="ruby" onclick="selectLanguage('ruby')">
+                            <div class="language-icon ruby">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3>Ruby</h3>
+                            <p>Elegant & expressive</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="ruby-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="ruby-level">Level 1</span>
+                            </div>
+                        </div>
+                        <div class="language-card" data-language="go" onclick="selectLanguage('go')">
+                            <div class="language-icon go">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Go</h3>
+                            <p>Fast & scalable</p>
+                            <div class="language-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="go-progress" style="width: 0%"></div>
+                                </div>
+                                <span id="go-level">Level 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Selection Screen -->
+            <div id="lesson-selection" class="screen">
+                <div class="container">
+                    <button class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h1 class="title" id="selected-language-title">Python Lessons</h1>
+                    <div class="lesson-path" id="lesson-path">
+                        <!-- Lessons will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Content Screen -->
+            <div id="lesson-content" class="screen">
+                <div class="container">
+                    <button class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <div class="lesson-header">
+                        <h2 id="lesson-title">Lesson Title</h2>
+                        <div class="lesson-progress">
+                            <span id="lesson-step">1/5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="lesson-body">
+                        <div class="explanation-section">
+                            <div class="ai-explanation">
+                                <div class="ai-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="explanation-content">
+                                    <p id="explanation-text">Loading explanation...</p>
+                                    <button class="regenerate-btn" onclick="regenerateExplanation()">
+                                        <i class="fas fa-sync-alt"></i> Regenerate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-section">
+                            <div class="code-editor" id="code-editor">
+                                <div class="editor-header">
+                                    <span id="editor-language">Python</span>
+                                    <div class="editor-actions">
+                                        <button class="action-btn" onclick="runCode()">
+                                            <i class="fas fa-play"></i> Run
+                                        </button>
+                                        <button class="action-btn" onclick="resetCode()">
+                                            <i class="fas fa-undo"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
+                                <textarea id="code-input" spellcheck="false" placeholder="Write your code here..."></textarea>
+                            </div>
+                            <div class="output-section">
+                                <div class="output-header">
+                                    <span>Output</span>
+                                </div>
+                                <div id="code-output" class="output-content">
+                                    <p class="placeholder">Run your code to see output...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="code-breakdown-section" id="code-breakdown-section" style="display: none;">
+                            <h3>Code Breakdown</h3>
+                            <div id="code-breakdown-content">
+                                <!-- Code breakdown items will be dynamically generated -->
+                            </div>
+                        </div>
+
+                        <div class="quiz-section" id="quiz-section">
+                            <h3>Quiz</h3>
+                            <div id="quiz-content">
+                                <!-- Quiz will be dynamically generated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lesson-footer">
+                        <button class="btn btn-secondary" id="prev-btn" onclick="previousStep()">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-btn" onclick="nextStep()">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div id="profile-screen" class="screen">
+                <div class="container">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h2 id="profile-name">Coder</h2>
+                        <p id="profile-level">Level 1</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-fire"></i>
+                            <h3 id="profile-streak">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-gem"></i>
+                            <h3 id="profile-xp">0</h3>
+                            <p>Total XP</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-book"></i>
+                            <h3 id="profile-lessons">0</h3>
+                            <p>Lessons Completed</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3 id="profile-achievements">0</h3>
+                            <p>Achievements</p>
+                        </div>
+                    </div>
+                    <div class="achievements-section">
+                        <h3>Achievements</h3>
+                        <div class="achievements-grid" id="achievements-grid">
+                            <!-- Achievements will be dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showScreen('language-selection')">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('lesson-selection')">
+                <i class="fas fa-book-open"></i>
+                <span>Lessons</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('profile-screen')">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </nav>
+
+        <!-- Floating Cat Assistant -->
+        <div class="floating-cat" id="floating-cat" onclick="toggleCatChat()">
+            <div class="cat-body">
+                <div class="cat-face-small">
+                    <div class="cat-ears-small">
+                        <div class="ear-small left"></div>
+                        <div class="ear-small right"></div>
+                    </div>
+                    <div class="cat-eyes-small">
+                        <div class="eye-small left"></div>
+                        <div class="eye-small right"></div>
+                    </div>
+                    <div class="cat-nose-small"></div>
+                    <div class="cat-mouth-small"></div>
+                </div>
+            </div>
+            <div class="cat-bubble" id="cat-bubble">
+                <p>I can help you! 😺</p>
+            </div>
+        </div>
+
+        <!-- Cat AI Chat -->
+        <div class="cat-chat" id="cat-chat">
+            <div class="cat-chat-header">
+                <div class="cat-avatar">
+                    <div class="cat-face">
+                        <div class="cat-ears">
+                            <div class="ear left"></div>
+                            <div class="ear right"></div>
+                        </div>
+                        <div class="cat-eyes">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                        </div>
+                        <div class="cat-nose"></div>
+                        <div class="cat-mouth"></div>
+                    </div>
+                </div>
+                <div class="cat-info">
+                    <h3>Meow AI 🐱</h3>
+                    <p>Your friendly coding buddy!</p>
+                </div>
+                <button class="close-chat" onclick="toggleCatChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cat-chat-messages" id="cat-chat-messages">
+                <div class="cat-message ai">
+                    <div class="message-content">
+                        <p>Meow! 😺 I'm Meow AI, your super friendly coding assistant! I'm here to help you learn coding step by step. Ask me anything about coding, and I'll do my best to explain it in a fun and easy way! What would you like to learn today? 🎉</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-chat-input">
+                <input type="text" id="cat-input" placeholder="Ask me anything about coding... 🐱" onkeypress="handleCatChatKeypress(event)">
+                <button class="send-btn" onclick="sendCatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CodeQuest</h4>
+                    <p>Learn coding the fun way</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <p>Contact us for customer support</p>
+                    <p>Email: samratuadav14@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Business</h4>
+                    <p>Open for business partnerships</p>
+                    <p>Email: samratuadav15@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeQuest. All rights reserved to the owner.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="lessons.js"></script>
+    <script src="ai-explanation.js"></script>
+</body>
+</html>
